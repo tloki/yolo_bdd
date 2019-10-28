@@ -1,0 +1,26 @@
+WARNING:root:The output folder /home/loki/Desktop/infer exists. New output may overwrite the old output.
+INFO:root:Performing object detection:
+DEBUG:root:The dimension of the result after nms is torch.Size([19, 6]) for idx 0
+INFO:root:Batch 0, Total time: 0.14192724227905273s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([5, 6]) for idx 0
+INFO:root:Batch 1, Total time: 0.1288750171661377s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([6, 6]) for idx 0
+INFO:root:Batch 2, Total time: 0.12938666343688965s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([10, 6]) for idx 0
+INFO:root:Batch 3, Total time: 0.13118982315063477s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([15, 6]) for idx 0
+INFO:root:Batch 4, Total time: 0.13276910781860352s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([4, 6]) for idx 0
+INFO:root:Batch 5, Total time: 0.12827825546264648s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([9, 6]) for idx 0
+INFO:root:Batch 6, Total time: 0.13026118278503418s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([14, 6]) for idx 0
+INFO:root:Batch 7, Total time: 0.13277935981750488s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([9, 6]) for idx 0
+INFO:root:Batch 8, Total time: 0.13014698028564453s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([5, 6]) for idx 0
+INFO:root:Batch 9, Total time: 0.1289682388305664s, 
+INFO:root:Average inference time (total) is 0.13145819306373596s.
+INFO:root:Std dev of inference time (total) is 0.0039939540438354015s.
+INFO:root:Saving images:
+INFO:root:(0) Image: '/home/loki/Data/BerkleyBAIR/bdd100k/images/100k/val/b1c66a42-6f7d68ca.jpg'

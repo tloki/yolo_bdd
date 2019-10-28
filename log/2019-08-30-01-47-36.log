@@ -1,0 +1,111 @@
+WARNING:root:The output folder /home/loki/Desktop/infer exists. New output may overwrite the old output.
+INFO:root:loading checkpoint from file './epoch0.pt'
+INFO:root:Performing object detection:
+DEBUG:root:The dimension of the result after nms is torch.Size([12, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 1
+INFO:root:Batch 0, Total time: 0.2615621089935303s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([4, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([2, 6]) for idx 1
+INFO:root:Batch 1, Total time: 0.2347259521484375s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([2, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 1
+INFO:root:Batch 2, Total time: 0.23415756225585938s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([4, 6]) for idx 1
+INFO:root:Batch 3, Total time: 0.23461580276489258s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([3, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([2, 6]) for idx 1
+INFO:root:Batch 4, Total time: 0.23413538932800293s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([4, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([0, 6]) for idx 1
+INFO:root:Batch 5, Total time: 0.23435759544372559s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([3, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 1
+INFO:root:Batch 6, Total time: 0.2339496612548828s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([3, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 1
+INFO:root:Batch 7, Total time: 0.23519515991210938s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([4, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([2, 6]) for idx 1
+INFO:root:Batch 8, Total time: 0.23586702346801758s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([5, 6]) for idx 1
+INFO:root:Batch 9, Total time: 0.23511219024658203s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([7, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([0, 6]) for idx 1
+INFO:root:Batch 10, Total time: 0.24210476875305176s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([5, 6]) for idx 1
+INFO:root:Batch 11, Total time: 0.23592090606689453s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([5, 6]) for idx 1
+INFO:root:Batch 12, Total time: 0.23444747924804688s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([5, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 1
+INFO:root:Batch 13, Total time: 0.2365248203277588s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([0, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([0, 6]) for idx 1
+INFO:root:Batch 14, Total time: 0.23168635368347168s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([4, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([7, 6]) for idx 1
+INFO:root:Batch 15, Total time: 0.2383134365081787s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([5, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 1
+INFO:root:Batch 16, Total time: 0.23485565185546875s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([8, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([0, 6]) for idx 1
+INFO:root:Batch 17, Total time: 0.23693418502807617s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 1
+INFO:root:Batch 18, Total time: 0.23782849311828613s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([3, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 1
+INFO:root:Batch 19, Total time: 0.23482298851013184s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([2, 6]) for idx 1
+INFO:root:Batch 20, Total time: 0.23423552513122559s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([2, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([0, 6]) for idx 1
+INFO:root:Batch 21, Total time: 0.23485469818115234s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([5, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([5, 6]) for idx 1
+INFO:root:Batch 22, Total time: 0.2386925220489502s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([6, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([5, 6]) for idx 1
+INFO:root:Batch 23, Total time: 0.237898588180542s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([2, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([3, 6]) for idx 1
+INFO:root:Batch 24, Total time: 0.23549890518188477s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([0, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([2, 6]) for idx 1
+INFO:root:Batch 25, Total time: 0.23281216621398926s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([2, 6]) for idx 1
+INFO:root:Batch 26, Total time: 0.23368597030639648s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([4, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([0, 6]) for idx 1
+INFO:root:Batch 27, Total time: 0.23418211936950684s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([0, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 1
+INFO:root:Batch 28, Total time: 0.23325467109680176s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([2, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 1
+INFO:root:Batch 29, Total time: 0.23487496376037598s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([2, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 1
+INFO:root:Batch 30, Total time: 0.2336890697479248s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([6, 6]) for idx 1
+INFO:root:Batch 31, Total time: 0.2404184341430664s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([4, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([0, 6]) for idx 1
+INFO:root:Batch 32, Total time: 0.23440265655517578s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([3, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([4, 6]) for idx 1
+INFO:root:Batch 33, Total time: 0.2357640266418457s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([6, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([0, 6]) for idx 1
+INFO:root:Batch 34, Total time: 0.23539400100708008s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 0
+DEBUG:root:The dimension of the result after nms is torch.Size([3, 6]) for idx 1
+INFO:root:Batch 35, Total time: 0.23479962348937988s, 

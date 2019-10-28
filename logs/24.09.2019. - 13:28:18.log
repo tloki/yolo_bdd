@@ -1,0 +1,5 @@
+INFO:root:loading checkpoint from file './checkpoints/ckpt_epoch_100.pt'
+DEBUG:matplotlib:CACHEDIR=/home/loki/.cache/matplotlib
+DEBUG:matplotlib.font_manager:Using fontManager instance from /home/loki/.cache/matplotlib/fontlist-v310.json
+DEBUG:matplotlib.pyplot:Loaded backend module://backend_interagg version unknown.
+INFO:root:[Epoch 0/30, Batch 0/69863] [Losses: total 478.20263671875, coord 90.42103576660156, obj 15.797344207763672, noobj 40.06063461303711, class 2.2880163192749023]

@@ -1,0 +1,36 @@
+WARNING:root:The output folder /home/loki/Desktop/infer exists. New output may overwrite the old output.
+INFO:root:loading checkpoint from file './epoch0.pt'
+INFO:root:Performing object detection:
+DEBUG:root:The dimension of the result after nms is torch.Size([12, 6]) for idx 0
+INFO:root:Batch 0, Total time: 0.19180870056152344s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 0
+INFO:root:Batch 1, Total time: 0.13071203231811523s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([4, 6]) for idx 0
+INFO:root:Batch 2, Total time: 0.1284646987915039s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([2, 6]) for idx 0
+INFO:root:Batch 3, Total time: 0.12793850898742676s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([2, 6]) for idx 0
+INFO:root:Batch 4, Total time: 0.1278059482574463s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 0
+INFO:root:Batch 5, Total time: 0.12735223770141602s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([1, 6]) for idx 0
+INFO:root:Batch 6, Total time: 0.12746405601501465s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([4, 6]) for idx 0
+INFO:root:Batch 7, Total time: 0.12852764129638672s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([3, 6]) for idx 0
+INFO:root:Batch 8, Total time: 0.12819194793701172s, 
+DEBUG:root:The dimension of the result after nms is torch.Size([2, 6]) for idx 0
+INFO:root:Batch 9, Total time: 0.12770414352416992s, 
+INFO:root:Average inference time (total) is 0.13459698855876923s.
+INFO:root:Std dev of inference time (total) is 0.020124804228544235s.
+INFO:root:Saving images:
+INFO:root:(0) Image: '/home/loki/Data/BerkleyBAIR/bdd100k/images/100k/val/b1c66a42-6f7d68ca.jpg'
+INFO:root:(1) Image: '/home/loki/Data/BerkleyBAIR/bdd100k/images/100k/val/b1c81faa-3df17267.jpg'
+INFO:root:(2) Image: '/home/loki/Data/BerkleyBAIR/bdd100k/images/100k/val/b1c81faa-c80764c5.jpg'
+INFO:root:(3) Image: '/home/loki/Data/BerkleyBAIR/bdd100k/images/100k/val/b1c9c847-3bda4659.jpg'
+INFO:root:(4) Image: '/home/loki/Data/BerkleyBAIR/bdd100k/images/100k/val/b1ca2e5d-84cf9134.jpg'
+INFO:root:(5) Image: '/home/loki/Data/BerkleyBAIR/bdd100k/images/100k/val/b1ca8418-84a133a0.jpg'
+INFO:root:(6) Image: '/home/loki/Data/BerkleyBAIR/bdd100k/images/100k/val/b1cac6a7-04e33135.jpg'
+INFO:root:(7) Image: '/home/loki/Data/BerkleyBAIR/bdd100k/images/100k/val/b1cd1e94-26dd524f.jpg'
+INFO:root:(8) Image: '/home/loki/Data/BerkleyBAIR/bdd100k/images/100k/val/b1cd1e94-549d0bfe.jpg'
+INFO:root:(9) Image: '/home/loki/Data/BerkleyBAIR/bdd100k/images/100k/val/b1ceb32e-3f481b43.jpg'
