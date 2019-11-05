@@ -1,155 +1,96 @@
 import time
-# from config_coco import NUM_CLASSES, EPSILON
 from config_bdd100k import NUM_CLASSES, EPSILON
 import argparse
-import datetime
 from utils import *
 from models.yolov3 import load_yolov3_model
 from datasets.utils import load_dataset
 from config_bdd100k import *
-from models.yolov3 import yolo_loss_fn
+from MAP.map_calc import MAPCalculator
+from tqdm import tqdm
+import torch
 
 
 def run_yolo_inference(config: argparse.Namespace):
-    # region logging
-    current_datetime_str = datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-    log_file_name_by_time = current_datetime_str + ".log"
-    if config.debug:
-        log_level = logging.DEBUG
-    elif config.verbose:
-        log_level = logging.INFO
-    else:
-        log_level = logging.WARNING
-    config_logging(config.log_dir, log_file_name_by_time, level=log_level)
-    # endregion
-
     # set the device for inference
-    device = config_device(config.cpu_only)
-    make_output_dir(config.out_dir)
+    device = "cuda"
+
+    weight_path = "/Users/loki/Datasets/pretrained_models/bdd_epoch_100.pt"
 
     # load model
-    model = load_yolov3_model(config.weight_path, device, checkpoint=config.from_ckpt)
+    model = load_yolov3_model(weight_path, device, checkpoint=True)
 
-    #config.label_path
-    # load data
-    dataloader = load_dataset(type_=config.dataset_type,
-                              img_dir=config.img_dir,
-                              label_file=None,
-                              img_size=config.img_size,
-                              batch_size=config.batch_size,
-                              n_cpu=config.n_cpu,
+    img_size = 416
+
+    dataloader = load_dataset(type_="coco",
+                              img_dir="/Users/loki/Datasets/BerkleyBAIR/bdd100k/images/100k/val",
+                              label_file="/Users/loki/Datasets/BerkleyBAIR/bdd100k/labels/bdd100k_labels_images_val.json.coco_format.json",
+                              img_size=img_size,
+                              batch_size=16,
+                              n_cpu=32,
                               shuffle=False,
                               augment=False)
 
     # run detection
     model = model.to(device)
-    results = run_detection(model, dataloader, device, config.conf_thres, config.nms_thres)
+    print(device)
+    print(img_size)
+    results = run_detection(model, dataloader, device, img_size=img_size)
 
-    # post processing
-    if config.save_det:
-        json_path = '{}/{}/detections.json'.format(config.out_dir, current_datetime_str)
-        make_output_dir(os.path.split(json_path)[0])
-        save_results_as_json(results, json_path)
-    if config.save_img:
-        class_names = load_class_names_from_file(config.class_path)
-        img_path = '{}/{}/img'.format(config.out_dir, current_datetime_str)
-        make_output_dir(img_path)
-        save_results_as_images(results, img_path, class_names)
-    return
+    print("result:", results)
 
 
-def run_detection(model, dataloader, device, conf_thres, nms_thres: object, img_size=416):
+def run_detection(model, dataloader, device, img_size=416):
     results = []
     _detection_time_list = []
     # _total_time = 0
 
-    logging.info('Performing object detection:')
+    class_names = load_class_names_from_file("data/bdd100k.names")
+    print(class_names)
 
-    from tqdm import tqdm
+    map = MAPCalculator(0.5, classes=class_names)
+    # map = MAPCalculator(0.5, classes=['vehicle'])
 
-    # for batch_i, (imgs, targets, target_lengths) in tqdm(enumerate(dataloader), desc="batch progress",
-    #                                                          total=len(dataloader)):
-    #
-    #     with torch.no_grad():
-    #
-    #         imgs = imgs.to(device)
-    #         targets = targets.to(device)
-    #         target_lengths = target_lengths.to(device)
-    #
-    #         # file_names = batch[0]
-    #         # img_batch = batch[1].to(device)
-    #         # scales = batch[2].to(device)
-    #         # paddings = batch[3].to(device)
-    #
-    #         # Get detections
-    #         detections = model(imgs)
-    #         losses = yolo_loss_fn(detections, targets, target_lengths, img_size, average=False)
-    #         # detections = post_process(detections, True, conf_thres, nms_thres)
-    #
-    #         print("[Losses: total {}, coord {}, obj {}, noobj {}, class {}]".format(
-    #             losses[0].item(), losses[1].item(),
-    #             losses[2].item(), losses[3].item(), losses[4].item()
-    #         ))
-    #
-    #         # for detection, scale, padding in zip(detections, scales, paddings):
-    #         #     detection[..., :4] = untransform_bboxes(detection[..., :4], scale, padding)
-    #         #     cxcywh_to_xywh(detection)
-    #
-    #         # Log progress
-    #         # end_time = time.time()
-    #         # inference_time_both = end_time - start_time
-    #         # # print("Total PP time: {:.1f}".format(inference_time_pp*1000))
-    #         # logging.info('Batch {}, '
-    #         #              'Total time: {}s, '.format(batch_i,
-    #         #                                         inference_time_both))
-    #         # _detection_time_list.append(inference_time_both)
-    #         # _total_time += inference_time_both
-    #
-    #         # results.extend(zip(file_names, detections, scales, paddings))
+    torch.backends.cudnn.benchmark = True
 
-    print("num of batches: {}".format(len(dataloader)))
+    gt_pred_pairs = []
 
-    for batch_i, batch in tqdm(enumerate(dataloader), total=(1000//14) + 1):
-        print(batch_i, flush=True)
-        #TODO: implement testing limit lol
-        if batch_i >= 1000:
-            break
+    for batch_i, batch in tqdm(enumerate(dataloader), total=len(dataloader), desc="detection"):
 
-        file_names = batch[0]
-        img_batch = batch[1].to(device)
-        scales = batch[2].to(device)
-        paddings = batch[3].to(device)
+        # if batch_i > 10:
+        #     break
 
-        # Get detections
-        start_time = time.time()
+        images = batch[0].to(device)
+        labels = batch[1]
+
         with torch.no_grad():
-            detections = model(img_batch)
-        detections = post_process(detections, True, conf_thres, nms_thres)
+            # faster to transfer to cpu
+            detections = model(images).to("cpu")
 
-        for detection, scale, padding in zip(detections, scales, paddings):
-            detection[..., :4] = untransform_bboxes(detection[..., :4], scale, padding)
-            cxcywh_to_xywh(detection)
+        # faster:
+        # labels = labels.to("cpu")
+        # detections = detections.to("cpu")
 
-        # Log progress
-        end_time = time.time()
-        inference_time_both = end_time - start_time
-        # print("Total PP time: {:.1f}".format(inference_time_pp*1000))
-        logging.info('Batch {}, '
-                     'Total time: {}s, '.format(batch_i,
-                                                inference_time_both))
-        _detection_time_list.append(inference_time_both)
-        # _total_time += inference_time_both
+        # detections = post_process(detections, False, 0.001, 0.4)
+        # detections = post_process(detections, False, 0.001, 0.4)
+        detections = post_process(detections, True, 0.01, 0.4)
+        labels = post_process(labels, False, 0.05, None)
 
-        results.extend(zip(file_names, detections, scales, paddings))
+        for d, l in zip(detections, labels):
+            cxcywh_to_xywh(l)
+            cxcywh_to_xywh(d)
 
-    _detection_time_tensor = torch.tensor(_detection_time_list)
-    avg_time = torch.mean(_detection_time_tensor)
-    time_std_dev = torch.std(_detection_time_tensor)
-    logging.info('Average inference time (total) is {}s.'.format(float(avg_time)))
-    logging.info('Std dev of inference time (total) is {}s.'.format(float(time_std_dev)))
+            # slower:
+            # l = l.to("cpu")
+            # d = d.to("cpu")
 
-    print("end")
-    return results
+            gt_pred_pairs.append((l.numpy(), d.numpy()))
+
+    for l, d in tqdm(gt_pred_pairs, desc="adding predictions"):
+        map.add_gt_pred_pair(l, d)
+
+    print("calculating map")
+
+    return map.calculate(print_=True)
 
 
 def post_process(results_raw, nms, conf_thres, nms_thres):
@@ -317,3 +258,6 @@ def iou_one_to_many(bbox1, bboxes2, center=False):
 def argsort(t, reverse=False):
     """Given a list, sort the list and return the original indices of the sorted list."""
     return sorted(range(len(t)), key=t.__getitem__, reverse=reverse)
+
+if __name__ == '__main__':
+    run_yolo_inference(None)

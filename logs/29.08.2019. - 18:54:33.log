@@ -1,6 +1,0 @@
-DEBUG:matplotlib:CACHEDIR=/home/loki/.cache/matplotlib
-DEBUG:matplotlib.font_manager:Using fontManager instance from /home/loki/.cache/matplotlib/fontlist-v310.json
-DEBUG:matplotlib.pyplot:Loaded backend module://backend_interagg version unknown.
-INFO:root:[Epoch 0/30, Batch 0/69863] [Losses: total 2790.91455078125, coord 207.02682495117188, obj 21.689056396484375, noobj 7472.4306640625, class 239.60501098632812]
-INFO:root:[Epoch 0/30, Batch 1/69863] [Losses: total 1797.7076416015625, coord 51.271728515625, obj 4.706010818481445, noobj 7413.3623046875, class 53.970462799072266]
-INFO:root:[Epoch 0/30, Batch 2/69863] [Losses: total 2732.661865234375, coord 227.85340881347656, obj 12.127899169921875, noobj 7320.3818359375, class 117.19046020507812]

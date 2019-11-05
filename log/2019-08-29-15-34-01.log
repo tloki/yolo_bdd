@@ -1,9 +1,0 @@
-WARNING:root:CUDA device is not available. Will use CPU
-WARNING:root:The output folder /home/loki/Desktop/infer exists. New output may overwrite the old output.
-INFO:root:Performing object detection:
-DEBUG:root:The dimension of the result after nms is torch.Size([0, 6]) for idx 0
-INFO:root:Batch 0, Total time: 0.5318443775177002s, 
-DEBUG:root:The dimension of the result after nms is torch.Size([0, 6]) for idx 0
-INFO:root:Batch 1, Total time: 0.46953248977661133s, 
-DEBUG:root:The dimension of the result after nms is torch.Size([0, 6]) for idx 0
-INFO:root:Batch 2, Total time: 0.4795713424682617s, 

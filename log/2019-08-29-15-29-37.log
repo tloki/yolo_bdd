@@ -1,3 +1,0 @@
-WARNING:root:CUDA device is not available. Will use CPU
-WARNING:root:The output folder /home/loki/Desktop/infer exists. New output may overwrite the old output.
-INFO:root:Performing object detection:

@@ -27,7 +27,7 @@
 
 import torch
 from datasets.image import ImageFolder
-from datasets.coco import CocoDetectionBoundingBox
+from datasets.coco_old import CocoDetectionBoundingBox
 from datasets.caltech import CaltechPedDataset
 from torch.utils.data import DataLoader
 from datasets.bdd100k import BDD

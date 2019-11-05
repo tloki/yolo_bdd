@@ -58,7 +58,7 @@ def run_yolo_inference(config: argparse.Namespace):
     if config.save_img:
         import os.path
         epoch_name = os.path.basename(config.weight_path)
-        class_names = load_classes(config.class_path)
+        class_names = load_class_names_from_file(config.class_path)
         img_path = '{}/{}/img'.format(config.out_dir,epoch_name + current_datetime_str)
         make_output_dir(img_path)
         save_results_as_images(results, img_path, class_names)
@@ -333,3 +333,10 @@ def iou_one_to_many(bbox1, bboxes2, center=False):
 def argsort(t, reverse=False):
     """Given a list, sort the list and return the original indices of the sorted list."""
     return sorted(range(len(t)), key=t.__getitem__, reverse=reverse)
+
+
+
+
+
+if __name__ == '__main__':
+    pass

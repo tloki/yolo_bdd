@@ -18,6 +18,22 @@ from config_bdd100k import EPSILON
 #                           tv_tf.ToTensor()])
 
 
+def default_transform_fn_cv2(img_size):
+    return ComposeWithLabel([NPToPILImage(),
+                             PadToSquareWithLabel(fill=(127, 127, 127)),
+                             ResizeWithLabel(img_size),
+                             tv_tf.ToTensor()])
+
+
+class NPToPILImage:
+
+    def __init__(self):
+        return
+
+    def __call__(self, img, label=None):
+        img = Image.fromarray(np.uint8(img))
+        return img, label
+
 def default_transform_fn(img_size):
     return ComposeWithLabel([PadToSquareWithLabel(fill=(127, 127, 127)),
                              ResizeWithLabel(img_size),

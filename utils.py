@@ -204,7 +204,7 @@ def pil_imshow(image, rectangle: list = None, multiple_rectangles=False, window_
     return
 
 
-def load_classes(path):
+def load_class_names_from_file(path):
     """
     Loads class labels at 'path'
     """

@@ -50,7 +50,7 @@ def run_yolo_evaluation(config: argparse.Namespace):
 
     run_evaluation(model=model, dataloader=dataloader, device=device, start_iter=config.start,
                    end_iter=config.stop, print_every=False,
-                   conf_thres=config.conf_thres, nms_thres=config.nms_thres, class_path=config.class_path)
+                   conf_thres=0.8, nms_thres=0.4, class_path="data/bdd100k.names")
 
 
 
@@ -59,28 +59,10 @@ def run_yolo_evaluation(config: argparse.Namespace):
 
 def run_evaluation(model: nn.Module, dataloader, device, class_path, img_size=416, start_iter=None,
                    end_iter=None, print_every=False, conf_thres=0.8, nms_thres=0.4):
-    results = []
-    _detection_time_list = []
-    logging.info('Performing evaluation:')
 
-    # print("num of batches: {}".format(len(dataloader)))
-    # print()
-
-    if start_iter is None:
-        start_iter = 0
-
-    l1_sum = 0
-    l2_sum = 0
-    l3_sum = 0
-    l4_sum = 0
-    l5_sum = 0
-
-    class_names = load_classes(class_path)
+    class_names = load_class_names_from_file(class_path)
     map = MAP_Calculator(0.5, classes=class_names, noprint=True)
 
-    # with torch.no_grad():
-        # for batch_i, batch in tqdm(enumerate(dataloader)):
-    n_iters = 0
     for batch_i, batch in tqdm(enumerate(dataloader), total=end_iter):
         if batch_i < start_iter:
             continue
@@ -88,8 +70,6 @@ def run_evaluation(model: nn.Module, dataloader, device, class_path, img_size=41
         if end_iter is not None and batch_i >= end_iter:
             break
 
-        n_iters += 1
-        # images, labels, label_sizes, scales, paddings = batch
 
         images = batch[0].to(device)
         scales = batch[3]
